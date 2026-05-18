@@ -1,0 +1,636 @@
+---
+layout: null
+---
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Alejandro Lopera Marín — Certificaciones</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@300;400&display=swap"
+        rel="stylesheet">
+
+    <style>
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        :root {
+            --bg: #F5F2ED;
+            --ink: #1A1714;
+            --muted: #8A8278;
+            --accent: #C2410C;
+            --line: #D8D2C8;
+            --card-bg: #FDFBF8;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: var(--bg);
+            color: var(--ink);
+            font-family: 'DM Mono', monospace;
+            font-size: 13px;
+            line-height: 1.6;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* ── NOISE TEXTURE ── */
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* ── LAYOUT ── */
+        .wrapper {
+            position: relative;
+            z-index: 1;
+            max-width: 760px;
+            margin: 0 auto;
+            padding: 80px 32px 120px;
+        }
+
+        /* ── HEADER ── */
+        header {
+            margin-bottom: 72px;
+            animation: fadeUp 0.7s ease both;
+        }
+
+        .label {
+            font-family: 'DM Mono', monospace;
+            font-size: 10px;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .label::after {
+            content: '';
+            flex: 1;
+            max-width: 48px;
+            height: 1px;
+            background: var(--accent);
+            opacity: 0.5;
+        }
+
+        h1 {
+            font-family: 'DM Serif Display', serif;
+            font-size: clamp(42px, 8vw, 68px);
+            line-height: 1.05;
+            letter-spacing: -0.02em;
+            color: var(--ink);
+        }
+
+        h1 em {
+            font-style: italic;
+            color: var(--muted);
+        }
+
+        .subtitle {
+            margin-top: 20px;
+            color: var(--muted);
+            font-size: 12px;
+            letter-spacing: 0.04em;
+            max-width: 380px;
+        }
+
+        /* ── PROFILE ── */
+        .profile {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 24px;
+            margin-bottom: 56px;
+            padding-bottom: 40px;
+            border-bottom: 1px solid var(--line);
+            animation: fadeUp 0.7s ease both;
+        }
+
+        .profile-name {
+            font-family: 'DM Serif Display', serif;
+            font-size: clamp(28px, 5vw, 40px);
+            line-height: 1.1;
+            letter-spacing: -0.02em;
+            color: var(--ink);
+            margin-bottom: 8px;
+        }
+
+        .profile-roles {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-bottom: 16px;
+        }
+
+        .role-tag {
+            font-size: 9.5px;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: var(--muted);
+            border: 1px solid var(--line);
+            padding: 3px 10px;
+            border-radius: 2px;
+        }
+
+        .linkedin-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            font-size: 10px;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--accent);
+            text-decoration: none;
+            transition: opacity 0.2s;
+        }
+
+        .linkedin-link:hover {
+            opacity: 0.7;
+        }
+
+        .linkedin-link svg {
+            width: 13px;
+            height: 13px;
+            fill: var(--accent);
+            flex-shrink: 0;
+        }
+
+        /* ── YEAR GROUP ── */
+        .year-group {
+            margin-bottom: 56px;
+            animation: fadeUp 0.7s ease both;
+        }
+
+        .year-group:nth-child(2) {
+            animation-delay: 0.1s;
+        }
+
+        .year-group:nth-child(3) {
+            animation-delay: 0.15s;
+        }
+
+        .year-group:nth-child(4) {
+            animation-delay: 0.2s;
+        }
+
+        .year-group:nth-child(5) {
+            animation-delay: 0.25s;
+        }
+
+        .year-heading {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+
+        .year-number {
+            font-family: 'DM Serif Display', serif;
+            font-size: 13px;
+            color: var(--accent);
+            letter-spacing: 0.05em;
+        }
+
+        .year-line {
+            flex: 1;
+            height: 1px;
+            background: var(--line);
+        }
+
+        .year-count {
+            font-size: 10px;
+            color: var(--muted);
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+        }
+
+        /* ── CERT CARD ── */
+        .cert-list {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .cert-card {
+            background: var(--card-bg);
+            border: 1px solid var(--line);
+            border-left: 2px solid transparent;
+            padding: 18px 22px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+            text-decoration: none;
+            color: inherit;
+            transition: border-left-color 0.2s, background 0.2s, transform 0.2s;
+            cursor: pointer;
+        }
+
+        .cert-card:hover {
+            border-left-color: var(--accent);
+            background: #fff;
+            transform: translateX(4px);
+        }
+
+        .cert-info {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .cert-source {
+            font-size: 9.5px;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            color: var(--muted);
+            margin-bottom: 4px;
+        }
+
+        .cert-name {
+            font-size: 13px;
+            color: var(--ink);
+            line-height: 1.4;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .cert-arrow {
+            font-size: 14px;
+            color: var(--muted);
+            flex-shrink: 0;
+            transition: color 0.2s, transform 0.2s;
+        }
+
+        .cert-card:hover .cert-arrow {
+            color: var(--accent);
+            transform: translateX(3px);
+        }
+
+        /* ── FOOTER ── */
+        footer {
+            margin-top: 80px;
+            padding-top: 32px;
+            border-top: 1px solid var(--line);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            animation: fadeUp 0.7s 0.3s ease both;
+        }
+
+        .footer-note {
+            font-size: 10px;
+            color: var(--muted);
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+
+        .footer-total {
+            font-family: 'DM Serif Display', serif;
+            font-size: 20px;
+            color: var(--ink);
+        }
+
+        .footer-total span {
+            color: var(--accent);
+        }
+
+        /* ── ANIMATION ── */
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(18px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* ── TOOLTIP for long names ── */
+        .cert-card[title]:hover::after {
+            content: attr(title);
+            position: absolute;
+            left: 0;
+            bottom: calc(100% + 6px);
+            background: var(--ink);
+            color: #fff;
+            font-size: 11px;
+            padding: 5px 10px;
+            white-space: nowrap;
+            pointer-events: none;
+            border-radius: 2px;
+            z-index: 10;
+        }
+
+        .cert-card {
+            position: relative;
+        }
+
+        /* ── RESPONSIVE ── */
+        @media (max-width: 520px) {
+            .wrapper {
+                padding: 60px 20px 80px;
+            }
+
+            h1 {
+                font-size: 38px;
+            }
+
+            .cert-name {
+                font-size: 12px;
+            }
+
+            .profile {
+                flex-direction: column;
+                gap: 12px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrapper">
+
+        <!-- PROFILE -->
+        <div class="profile">
+            <div>
+                <div class="profile-name">Alejandro<br>Lopera Marín</div>
+                <div class="profile-roles">
+                    <span class="role-tag">Estadístico</span>
+                    <span class="role-tag">Senior Data Scientist</span>
+                    <span class="role-tag">AI Engineer</span>
+                </div>
+                <a class="linkedin-link" href="https://www.linkedin.com/in/loperalejandro/" target="_blank"
+                    rel="noopener">
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+                    </svg>
+                    linkedin.com/in/loperalejandro
+                </a>
+            </div>
+        </div>
+
+        <!-- HEADER -->
+        <header>
+            <div class="label">Portafolio profesional</div>
+            <h1>Certifi<em>ca</em><br>ciones</h1>
+            <p class="subtitle">Formación continua en Machine Learning, Inteligencia Artificial, Data Science y Cloud.
+            </p>
+        </header>
+
+        <!-- 2020 -->
+        <div class="year-group">
+            <div class="year-heading">
+                <span class="year-number">2020</span>
+                <div class="year-line"></div>
+                <span class="year-count">7 cursos</span>
+            </div>
+            <div class="cert-list">
+
+                <a class="cert-card" href="https://www.udemy.com/certificate/UC-f7b2da9d-2d8d-4dc2-89b0-0ee50ff3e33d"
+                    target="_blank" rel="noopener" title="Curso completo de Machine Learning: Data Science en Python">
+                    <div class="cert-info">
+                        <div class="cert-source">Udemy</div>
+                        <div class="cert-name">Curso completo de Machine Learning: Data Science en Python</div>
+                    </div>
+                    <span class="cert-arrow">→</span>
+                </a>
+
+                <a class="cert-card" href="https://www.udemy.com/certificate/UC-9c477389-ab9b-45e4-ac3d-85b2ae23946b/"
+                    target="_blank" rel="noopener"
+                    title="Deep Learning de A a Z: redes neuronales en Python desde cero">
+                    <div class="cert-info">
+                        <div class="cert-source">Udemy</div>
+                        <div class="cert-name">Deep Learning de A a Z: redes neuronales en Python desde cero</div>
+                    </div>
+                    <span class="cert-arrow">→</span>
+                </a>
+
+                <a class="cert-card" href="http://ude.my/UC-f9790a65-4149-4a8d-9595-bc0682d7ca09" target="_blank"
+                    rel="noopener" title="Machine Learning de A a la Z: R y Python para Data Science">
+                    <div class="cert-info">
+                        <div class="cert-source">Udemy</div>
+                        <div class="cert-name">Machine Learning de A a la Z: R y Python para Data Science</div>
+                    </div>
+                    <span class="cert-arrow">→</span>
+                </a>
+
+                <a class="cert-card" href="https://www.udemy.com/certificate/UC-900b9dec-0272-415e-a0b1-619d09fecdbc/"
+                    target="_blank" rel="noopener" title="Inteligencia Artificial aplicada a Negocios y Empresas">
+                    <div class="cert-info">
+                        <div class="cert-source">Udemy</div>
+                        <div class="cert-name">Inteligencia Artificial aplicada a Negocios y Empresas</div>
+                    </div>
+                    <span class="cert-arrow">→</span>
+                </a>
+
+                <a class="cert-card"
+                    href="https://www.datacamp.com/statement-of-accomplishment/course/8ec195bc59463bb0a6254e9e294456dcbc81c3e0"
+                    target="_blank" rel="noopener" title="Extreme Gradient Boosting with XGBoost">
+                    <div class="cert-info">
+                        <div class="cert-source">DataCamp</div>
+                        <div class="cert-name">Extreme Gradient Boosting with XGBoost</div>
+                    </div>
+                    <span class="cert-arrow">→</span>
+                </a>
+
+                <a class="cert-card" href="https://www.udemy.com/certificate/UC-e0ba962f-1269-41cb-b602-59d387c4f280/"
+                    target="_blank" rel="noopener" title="AWS SageMaker Practical for Beginners">
+                    <div class="cert-info">
+                        <div class="cert-source">Udemy</div>
+                        <div class="cert-name">AWS SageMaker Practical for Beginners</div>
+                    </div>
+                    <span class="cert-arrow">→</span>
+                </a>
+
+                <a class="cert-card"
+                    href="https://www.datacamp.com/statement-of-accomplishment/course/c6c9d3462adcfd624e6727ec803e495aabda3f2a"
+                    target="_blank" rel="noopener" title="Ensemble Methods in Python">
+                    <div class="cert-info">
+                        <div class="cert-source">DataCamp</div>
+                        <div class="cert-name">Ensemble Methods in Python</div>
+                    </div>
+                    <span class="cert-arrow">→</span>
+                </a>
+
+            </div>
+        </div>
+
+        <!-- 2021 -->
+        <div class="year-group">
+            <div class="year-heading">
+                <span class="year-number">2021</span>
+                <div class="year-line"></div>
+                <span class="year-count">6 cursos</span>
+            </div>
+            <div class="cert-list">
+
+                <a class="cert-card" href="https://www.udemy.com/certificate/UC-06ad0b24-4cc7-4d9b-94f9-f6168b957878/"
+                    target="_blank" rel="noopener" title="Procesamiento del Lenguaje Natural Moderno en Python">
+                    <div class="cert-info">
+                        <div class="cert-source">Udemy</div>
+                        <div class="cert-name">Procesamiento del Lenguaje Natural Moderno en Python</div>
+                    </div>
+                    <span class="cert-arrow">→</span>
+                </a>
+
+                <a class="cert-card" href="https://www.udemy.com/certificate/UC-9e5bbb7d-da8c-493a-b153-9acf89d3b321/"
+                    target="_blank" rel="noopener" title="Masterclass en Inteligencia Artificial">
+                    <div class="cert-info">
+                        <div class="cert-source">Udemy</div>
+                        <div class="cert-name">Masterclass en Inteligencia Artificial</div>
+                    </div>
+                    <span class="cert-arrow">→</span>
+                </a>
+
+                <a class="cert-card" href="https://www.udemy.com/certificate/UC-b31aafde-dd0b-4a1e-b745-d16bc5585b2e/"
+                    target="_blank" rel="noopener" title="BERT, el algoritmo de NLP más avanzado de Google">
+                    <div class="cert-info">
+                        <div class="cert-source">Udemy</div>
+                        <div class="cert-name">BERT, el algoritmo de NLP más avanzado de Google</div>
+                    </div>
+                    <span class="cert-arrow">→</span>
+                </a>
+
+                <a class="cert-card" href="https://www.udemy.com/certificate/UC-7cf8b857-b129-4ad0-841e-79534d50c110/"
+                    target="_blank" rel="noopener" title="Data Science aplicado a Negocios">
+                    <div class="cert-info">
+                        <div class="cert-source">Udemy</div>
+                        <div class="cert-name">Data Science aplicado a Negocios</div>
+                    </div>
+                    <span class="cert-arrow">→</span>
+                </a>
+
+                <a class="cert-card" href="https://www.udemy.com/certificate/UC-700cd01c-b27a-45ab-9173-d8bf07bc2749/"
+                    target="_blank" rel="noopener" title="Computer Vision Masterclass">
+                    <div class="cert-info">
+                        <div class="cert-source">Udemy</div>
+                        <div class="cert-name">Computer Vision Masterclass</div>
+                    </div>
+                    <span class="cert-arrow">→</span>
+                </a>
+
+                <a class="cert-card" href="https://www.udemy.com/certificate/UC-60e33500-7c0e-4a35-a95c-f9071df8fb23/"
+                    target="_blank" rel="noopener" title="TensorFlow 2.0">
+                    <div class="cert-info">
+                        <div class="cert-source">Udemy</div>
+                        <div class="cert-name">TensorFlow 2.0</div>
+                    </div>
+                    <span class="cert-arrow">→</span>
+                </a>
+
+            </div>
+        </div>
+
+        <!-- 2024 -->
+        <div class="year-group">
+            <div class="year-heading">
+                <span class="year-number">2024</span>
+                <div class="year-line"></div>
+                <span class="year-count">1 curso</span>
+            </div>
+            <div class="cert-list">
+
+                <a class="cert-card" href="https://www.udemy.com/certificate/UC-9d3ad89b-a1b8-48dc-b260-33ab7d98229e/"
+                    target="_blank" rel="noopener" title="Bootcamp Completo de ChatGPT, LLM y LangChain">
+                    <div class="cert-info">
+                        <div class="cert-source">Udemy</div>
+                        <div class="cert-name">Bootcamp Completo de ChatGPT, LLM y LangChain</div>
+                    </div>
+                    <span class="cert-arrow">→</span>
+                </a>
+
+            </div>
+        </div>
+
+        <!-- 2025 -->
+        <div class="year-group">
+            <div class="year-heading">
+                <span class="year-number">2025</span>
+                <div class="year-line"></div>
+                <span class="year-count">2 cursos</span>
+            </div>
+            <div class="cert-list">
+
+                <a class="cert-card" href="https://www.udemy.com/certificate/UC-8dba9d96-ecc5-4bfe-a9e1-bc27808d892f/"
+                    target="_blank" rel="noopener" title="MLOps with AWS - Bootcamp - Zero to Hero Series">
+                    <div class="cert-info">
+                        <div class="cert-source">Udemy</div>
+                        <div class="cert-name">MLOps with AWS — Bootcamp — Zero to Hero Series</div>
+                    </div>
+                    <span class="cert-arrow">→</span>
+                </a>
+
+                <a class="cert-card" href="https://www.udemy.com/certificate/UC-d51e3acf-a318-426f-89c9-8454f84c11da/"
+                    target="_blank" rel="noopener" title="Terraform: De principiante a certificado">
+                    <div class="cert-info">
+                        <div class="cert-source">Udemy</div>
+                        <div class="cert-name">Terraform: De principiante a certificado</div>
+                    </div>
+                    <span class="cert-arrow">→</span>
+                </a>
+
+            </div>
+        </div>
+
+        <!-- 2026 -->
+        <div class="year-group">
+            <div class="year-heading">
+                <span class="year-number">2026</span>
+                <div class="year-line"></div>
+                <span class="year-count">2 cursos</span>
+            </div>
+            <div class="cert-list">
+
+                <a class="cert-card" href="https://www.udemy.com/certificate/UC-00447477-66e5-4b3f-bff4-752ce9c2c995/"
+                    target="_blank" rel="noopener" title="NodeJS: De cero a experto">
+                    <div class="cert-info">
+                        <div class="cert-source">Udemy</div>
+                        <div class="cert-name">NodeJS: De cero a experto</div>
+                    </div>
+                    <span class="cert-arrow">→</span>
+                </a>
+
+                <a class="cert-card" href="https://www.udemy.com/certificate/UC-f18c7337-cfd0-4499-b931-e24837171ca4/"
+                    target="_blank" rel="noopener" title="TypeScript">
+                    <div class="cert-info">
+                        <div class="cert-source">Udemy</div>
+                        <div class="cert-name">TypeScript</div>
+                    </div>
+                    <span class="cert-arrow">→</span>
+                </a>
+
+            </div>
+        </div>
+
+        <!-- FOOTER -->
+        <footer>
+            <span class="footer-note">Certificados verificables</span>
+            <span class="footer-total"><span>18</span> certificaciones</span>
+        </footer>
+
+    </div>
+</body>
+
+</html>
